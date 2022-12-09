@@ -72,10 +72,43 @@ nvim_lsp.flow.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.cssls.setup {
+  on_attach = on_attach,
+  filetypes = { "css" },
+  cmd = { "css-lsp" },
+  capabilities = capabilities
+}
+
+nvim_lsp.emmet_ls.setup {
+  on_attach = on_attach,
+  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "eruby", "php" },
+  cmd = { "emmet-ls.cmd", "--stdio" },
+}
+
+nvim_lsp.html.setup {
+  on_attach = on_attach,
+  filetypes = { "html" },
+  cmd = { "vscode-html-language-server.cmd", "--stdio" },
+  capabilities = capabilities,
+  configurationSection = { "html", "css", "javascript" },
+  embeddedLanguages = {
+    css = true,
+    javascript = true
+  },
+  provideFormatter = true
+}
+
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server.cmd", "--stdio" },
+  capabilities = capabilities
+}
+
+nvim_lsp.intelephense.setup {
+  on_attach = on_attach,
+  filetypes = { "php" },
+  cmd = { "intelephense.cmd", "--stdio" },
   capabilities = capabilities
 }
 
@@ -111,6 +144,12 @@ nvim_lsp.tailwindcss.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.svelte.setup {
+  on_attach = on_attach,
+  cmd = { "svelteserver.cmd", "--stdio" },
+  filetypes = { "svelte" }
+}
+
 nvim_lsp.cssls.setup {
   on_attach = on_attach,
   capabilities = capabilities
@@ -128,6 +167,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
 }
+
 )
 
 -- Diagnostic symbols in the sign column (gutter)
@@ -152,9 +192,9 @@ vim.diagnostic.config({
 
 -- local status, nvim_lsp = pcall(require, 'lspconfig')
 -- if (not status) then return end
--- 
+--
 -- local protocol = require('vim.lsp.protocol')
--- 
+--
 -- local on_attach = function(client, bufnr)
 --   -- formating
 --   if client.server_capabilities.documentFormatingProvider then
@@ -164,19 +204,19 @@ vim.diagnostic.config({
 --     vim.api.nvim_command [[augroup END]]
 --   end
 -- end
--- 
+--
 -- nvim_lsp.tsserver.setup {
 --   on_attach = on_attach,
 --   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 --   cmd = { "typescript-language-server.cmd", "--stdio" },
 -- }
--- 
+--
 -- nvim_lsp.clangd.setup {
 --   on_attach = on_attach,
 --   filetypes = { "c", "cpp" },
 --   cmd = {"clangd"}
 -- }
--- 
+--
 -- nvim_lsp.sumneko_lua.setup {
 --   on_attach = on_attach,
 --   settings = {
@@ -185,7 +225,7 @@ vim.diagnostic.config({
 --         -- Get the language server to recognize the 'vim' global
 --         globals = { 'vim' }
 --       },
--- 
+--
 --       workspace = {
 --         -- Make the server aware of Neovim runtime files
 --         library = vim.api.nvim_get_runtime_file("", true)

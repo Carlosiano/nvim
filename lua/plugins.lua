@@ -6,42 +6,59 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
-packer.startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use {
-    'svrana/neosolarized.nvim',
-    requires = { 'tjdevries/colorbuddy.nvim' }
-  }
-  use 'kyazdani42/nvim-web-devicons' -- File icons
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
-  use 'L3MON4D3/LuaSnip' -- Snippet
-  use 'hoob3rt/lualine.nvim' -- Statusline
-  use 'onsails/lspkind-nvim' -- Vscode like pictograms
-  use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
-  use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-  use 'hrsh7th/nvim-cmp' -- Completion
-  use 'neovim/nvim-lspconfig' -- LSP
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
+packer.startup(
+  function(use)
+    use 'wbthomason/packer.nvim'
+    use {
+      'svrana/neosolarized.nvim',
+      requires = { 'tjdevries/colorbuddy.nvim' }
+    }
+    use 'kyazdani42/nvim-web-devicons' -- File icons
+    use 'glepnir/lspsaga.nvim' -- LSP UIs
+    use 'L3MON4D3/LuaSnip' -- Snippet
+    use 'hoob3rt/lualine.nvim' -- Statusline
+    use 'onsails/lspkind-nvim' -- Vscode like pictograms
+    use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
+    use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
+    use 'hrsh7th/nvim-cmp' -- Completion
+    use 'neovim/nvim-lspconfig' -- LSP
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+    }
 
-  -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via lua
-  -- use 'jose-elias-alvarez/null-ls.nvim'
-  use 'Carlosiano/null-ls.nvim'
-  use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client 
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
+    -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via lua
+    -- use 'jose-elias-alvarez/null-ls.nvim'
+    use 'Carlosiano/null-ls.nvim'
+    use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
 
-  use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
+    use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-ts-autotag'
 
-  use 'nvim-lua/plenary.nvim' -- Common utilities
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-file-browser.nvim'
-  use 'akinsho/nvim-bufferline.lua'
-  use 'norcalli/nvim-colorizer.lua'
+    use 'nvim-lua/plenary.nvim' -- Common utilities
+    use 'nvim-telescope/telescope.nvim'
+    use 'nvim-telescope/telescope-file-browser.nvim'
+    use 'akinsho/nvim-bufferline.lua'
+    use 'norcalli/nvim-colorizer.lua'
 
-  use 'lewis6991/gitsigns.nvim'
-  use 'dinhhuy258/git.nvim' -- For git blame & browse
-end)
+    use 'lewis6991/gitsigns.nvim'
+    use 'dinhhuy258/git.nvim' -- For git blame & browse
+
+    -- terminal
+    use {
+      'akinsho/toggleterm.nvim',
+      tag = '*'
+    }
+
+    -- nvim tree
+    use {
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+        'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      },
+    }
+    use 'terrortylor/nvim-comment'
+  end
+)
