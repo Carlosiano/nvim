@@ -1,8 +1,8 @@
-require('base')
-require('highlights')
-require('maps')
-require('plugins')
-require('reload')
+require('user.base')
+require('user.highlights')
+require('user.maps')
+require('user.plugins')
+require('user.reload')
 
 local has = function(x)
   return vim.fn.has(x) == 1
@@ -13,13 +13,13 @@ local is_win = has "win32"
 local is_linux = has "unix"
 
 if is_win then
-  require('windows')
+  require('user.windows')
 end
 
 if is_linux then
-  require('linux')
+  require('user.linux')
 end
 
 if is_mac then
-  require('macos')
+  require('user.macos')
 end

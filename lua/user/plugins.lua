@@ -28,8 +28,9 @@ packer.startup(
     }
 
     -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via lua
-    -- use 'jose-elias-alvarez/null-ls.nvim'
-    use 'Carlosiano/null-ls.nvim'
+    use 'jose-elias-alvarez/null-ls.nvim'
+    -- use 'Carlosiano/null-ls.nvim'
+
     use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
