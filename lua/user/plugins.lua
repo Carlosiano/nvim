@@ -14,14 +14,14 @@ packer.startup(
       requires = { 'tjdevries/colorbuddy.nvim' }
     }
     use 'kyazdani42/nvim-web-devicons' -- File icons
-    use 'glepnir/lspsaga.nvim' -- LSP UIs
-    use 'L3MON4D3/LuaSnip' -- Snippet
-    use 'hoob3rt/lualine.nvim' -- Statusline
-    use 'onsails/lspkind-nvim' -- Vscode like pictograms
-    use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
-    use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-    use 'hrsh7th/nvim-cmp' -- Completion
-    use 'neovim/nvim-lspconfig' -- LSP
+    use 'glepnir/lspsaga.nvim'         -- LSP UIs
+    use 'L3MON4D3/LuaSnip'             -- Snippet
+    use 'hoob3rt/lualine.nvim'         -- Statusline
+    use 'onsails/lspkind-nvim'         -- Vscode like pictograms
+    use 'hrsh7th/cmp-buffer'           -- nvim-cmp source for buffer words
+    use 'hrsh7th/cmp-nvim-lsp'         -- nvim-cmp source for neovim's built-in LSP
+    use 'hrsh7th/nvim-cmp'             -- Completion
+    use 'neovim/nvim-lspconfig'        -- LSP
     use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate'

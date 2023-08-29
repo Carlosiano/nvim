@@ -4,22 +4,21 @@ require('user.maps')
 require('user.plugins')
 require('user.reload')
 
-local has = function(x)
-  return vim.fn.has(x) == 1
-end
-
+local has = vim.fn.has
 local is_mac = has "macunix"
-local is_win = has "win32"
 local is_linux = has "unix"
+local is_win = has "win32"
+local is_wsl = has "wsl"
 
-if is_win then
-  require('user.windows')
+if is_mac == 1 then
+  require('user.macos')
 end
-
-if is_linux then
+if is_linux == 1 then
   require('user.linux')
 end
-
-if is_mac then
-  require('user.macos')
+if is_win == 1 then
+  require('user.windows')
+end
+if is_wsl == 1 then
+  require('user.wsl')
 end
